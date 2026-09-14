@@ -3,7 +3,8 @@ import os
 os.environ["REQUIRE_HUMAN_APPROVAL"] = "true"
 os.environ["MAX_AGENT_RETRIES"] = "2"
 
-from agentic.orchestrator import Orchestrator, Step, default_graph
+import agentic.orchestrator as orchestrator_module
+from agentic.orchestrator import Orchestrator, Step, default_graph, docs_agent
 
 
 def _deterministic_default_graph():
@@ -50,6 +51,9 @@ def test_release_with_approval(tmp_path, monkeypatch):
     assert run.step_status["tests"] == "success"
     assert run.step_status["docs"] == "success"
     assert run.metrics["success_rate"] == 1.0
+    assert run.metrics["retry_frequency"] == 0.0
+    assert run.metrics["rollback_frequency"] == 0.0
+    assert run.metrics["mttr_ms"] is None
     assert (tmp_path / "artifacts" / "runs" / f"{run.run_id}.json").exists()
 
 
@@ -67,6 +71,9 @@ def test_retry_then_success(tmp_path, monkeypatch):
     assert run.status == "completed"
     assert run.state["ok"] is True
     assert run.metrics["retry_count"] == 1
+    assert run.metrics["retry_frequency"] == 1.0
+    assert run.metrics["mttr_ms"] is not None
+    assert run.metrics["mttr_ms"] >= 0.0
 
 
 def test_fallback_after_retry_exhaustion(tmp_path, monkeypatch):
@@ -110,6 +117,7 @@ def test_rollback_runs_on_downstream_failure(tmp_path, monkeypatch):
     assert run.status == "safe_stopped"
     assert rolled_back["value"] is True
     assert run.metrics["rollback_count"] == 1
+    assert run.metrics["rollback_frequency"] == 0.5
 
 
 def test_replan_invalidates_changed_step_and_descendants(tmp_path, monkeypatch):
@@ -140,3 +148,65 @@ def test_ambiguous_requirement_without_llm_key_safe_stops_for_clarification(tmp_
     assert run.step_status["requirements"] == "fallback_success"
     assert run.step_status["policy"] == "failed"
     assert "release_ready" not in run.state
+
+def test_safe_stop_includes_underlying_step_error(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
+    def fail(_state):
+        raise RuntimeError("specific validation failure")
+
+    run = Orchestrator().execute(
+        [Step("validate", [], fail, max_retries=0)],
+        {"requirement": "x"},
+    )
+
+    assert run.status == "safe_stopped"
+    assert run.state["safe_stop"]["step"] == "validate"
+    assert "specific validation failure" in run.state["safe_stop"]["reason"]
+
+
+def test_docs_agent_requires_primary_contract_but_not_supplemental_docs(tmp_path, monkeypatch):
+    walkthrough = (
+        "# Engineering Walkthrough\n\n"
+        "```mermaid\ngraph TD\nA-->B\n```\n\n"
+        "Architecture, testing, and risk are described here.\n"
+        + ("Detailed engineering context. " * 220)
+    )
+    readme = "# Project\n\n" + ("Setup and execution guidance. " * 30)
+    (tmp_path / "ENGINEERING_WALKTHROUGH.md").write_text(walkthrough, encoding="utf-8")
+    (tmp_path / "README.md").write_text(readme, encoding="utf-8")
+    monkeypatch.setattr(orchestrator_module, "_repo_root", lambda: tmp_path)
+
+    output = docs_agent({})["documentation"]
+
+    assert output["passed"] is True
+    assert output["artifacts"]["ENGINEERING_WALKTHROUGH.md"]["required"] is True
+    assert output["artifacts"]["docs/ARCHITECTURE.md"]["present"] is False
+    assert any("docs/ARCHITECTURE.md" in warning for warning in output["warnings"])
+
+def test_parallel_wave_records_all_sibling_results_before_safe_stop(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
+    def succeed(_state):
+        return {"sibling_output": True}
+
+    def fail(_state):
+        raise RuntimeError("parallel branch failed")
+
+    run = Orchestrator().execute(
+        [
+            Step("a_fail", [], fail, max_retries=0),
+            Step("b_success", [], succeed, max_retries=0),
+        ],
+        {"requirement": "x"},
+    )
+
+    assert run.status == "safe_stopped"
+    assert run.step_status["a_fail"] == "failed"
+    assert run.step_status["b_success"] == "success"
+    assert any(
+        event["step"] == "b_success" and event["status"] == "success"
+        for event in run.events
+    )
+    assert "parallel branch failed" in run.state["safe_stop"]["reason"]
+

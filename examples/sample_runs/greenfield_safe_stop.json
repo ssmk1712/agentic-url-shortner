@@ -1,5 +1,5 @@
 {
-  "run_id": "c889f1d6-b82c-45fa-85cf-c31d8b8a7423",
+  "run_id": "d94ebae1-ac4b-4a38-a5e7-97b98297e2b5",
   "parent_run_id": null,
   "status": "safe_stopped",
   "state": {
@@ -42,7 +42,7 @@
         "app/service.py": "f22999f6b4a649b03d119c9b0793a2a61dd1b3df735a88650b450a44b12f7061",
         "app/repository.py": "937fdc38ff3cbeeee2215fcdf15a37d3c108d8ba7004978d97bc3b30c82f1737",
         "app/db.py": "5035734e8fac03b9f6867fdac5c3bce62f0176d9b379000a40755f94a7692f4d",
-        "agentic/orchestrator.py": "26aa86ec0060ccce6fea819d25c1f322df9f86ac00d5ae9207d5fb654d6da55c",
+        "agentic/orchestrator.py": "9f34171bc4496191965d9911b15a653b6c999051c033475df00c7b3af0a0a885",
         "agentic/llm.py": "08eef5886a90133fe060beab8523a56d19b98ded03f3f0de863df778ec843eda"
       }
     },
@@ -51,37 +51,54 @@
       "primary": "ENGINEERING_WALKTHROUGH.md",
       "artifacts": {
         "ENGINEERING_WALKTHROUGH.md": {
-          "bytes": 51652,
-          "sha256": "9fba3f2be8da7d1b32a9a4dcfd6b10940fcef189f13235ffab7242eb3a149e37"
+          "required": true,
+          "present": true,
+          "bytes": 53406,
+          "sha256": "2aa6ec1922354435470ff7c841f9e59e959ac89566bb84a4c1cd9fcc2e776939"
         },
         "README.md": {
-          "bytes": 4971,
-          "sha256": "6d21850ae1efd07b0f250ca5a9029b0f4cb1e31c3ea58e1732db37a5a6ba9933"
+          "required": true,
+          "present": true,
+          "bytes": 5546,
+          "sha256": "46a80e4b16f43e55a7d3169a43aa6acca8baec5154ebb922a370305afe896747"
         },
         "docs/WHITEBOARD.md": {
-          "bytes": 7959,
-          "sha256": "383a193ddb719d06f6b97c5b721a25ec9a69d4e5d264b9a142c292675837cc8e"
+          "required": false,
+          "present": true,
+          "bytes": 8009,
+          "sha256": "f9fb0cf4ad067857d32089549e80be73ffa220a298f9630800b97279ac191a4b"
         },
         "docs/ARCHITECTURE.md": {
-          "bytes": 10562,
-          "sha256": "bdad457053117836688f0d101e44acc2d794a51a181925ee94e024c58764c24c"
+          "required": false,
+          "present": true,
+          "bytes": 11704,
+          "sha256": "80375da1b4e393f44026c4a31105540007b0c26616b1b4c68c81586326fcba85"
         },
         "docs/DECISIONS.md": {
-          "bytes": 8162,
-          "sha256": "170e85f8dd14725a9a5fcaff74b3f276aee9d25917795cbe94be3eda62209c8d"
+          "required": false,
+          "present": true,
+          "bytes": 8416,
+          "sha256": "83ee295c555bde6b2e1d2e8057f8c88e3a00d5cc0b6f76020cdff089b976c13a"
         },
         "examples/SCENARIOS.md": {
-          "bytes": 6932,
-          "sha256": "974ee2f94f97fd0cbbabf37d33761e6dcf79e55e0f6b967a4dfd33e141cbd107"
+          "required": false,
+          "present": true,
+          "bytes": 7070,
+          "sha256": "525359f7745aa5a6e9122c0e3af3a1f2983cab25bbb5cc1889fff6f36e5e3883"
         }
-      }
+      },
+      "warnings": []
     },
     "validation": {
       "passed": true,
       "command": "python -m pytest -q tests/test_api.py",
       "summary": ".......                                                                  [100%]\n7 passed in 0.23s"
     },
-    "latency_ms": 1687.0
+    "safe_stop": {
+      "step": "release",
+      "reason": "human approval denied or missing"
+    },
+    "latency_ms": 1629.1
   },
   "step_status": {
     "requirements": "success",
@@ -137,7 +154,7 @@
           "app/service.py": "f22999f6b4a649b03d119c9b0793a2a61dd1b3df735a88650b450a44b12f7061",
           "app/repository.py": "937fdc38ff3cbeeee2215fcdf15a37d3c108d8ba7004978d97bc3b30c82f1737",
           "app/db.py": "5035734e8fac03b9f6867fdac5c3bce62f0176d9b379000a40755f94a7692f4d",
-          "agentic/orchestrator.py": "26aa86ec0060ccce6fea819d25c1f322df9f86ac00d5ae9207d5fb654d6da55c",
+          "agentic/orchestrator.py": "9f34171bc4496191965d9911b15a653b6c999051c033475df00c7b3af0a0a885",
           "agentic/llm.py": "08eef5886a90133fe060beab8523a56d19b98ded03f3f0de863df778ec843eda"
         }
       }
@@ -148,30 +165,43 @@
         "primary": "ENGINEERING_WALKTHROUGH.md",
         "artifacts": {
           "ENGINEERING_WALKTHROUGH.md": {
-            "bytes": 51652,
-            "sha256": "9fba3f2be8da7d1b32a9a4dcfd6b10940fcef189f13235ffab7242eb3a149e37"
+            "required": true,
+            "present": true,
+            "bytes": 53406,
+            "sha256": "2aa6ec1922354435470ff7c841f9e59e959ac89566bb84a4c1cd9fcc2e776939"
           },
           "README.md": {
-            "bytes": 4971,
-            "sha256": "6d21850ae1efd07b0f250ca5a9029b0f4cb1e31c3ea58e1732db37a5a6ba9933"
+            "required": true,
+            "present": true,
+            "bytes": 5546,
+            "sha256": "46a80e4b16f43e55a7d3169a43aa6acca8baec5154ebb922a370305afe896747"
           },
           "docs/WHITEBOARD.md": {
-            "bytes": 7959,
-            "sha256": "383a193ddb719d06f6b97c5b721a25ec9a69d4e5d264b9a142c292675837cc8e"
+            "required": false,
+            "present": true,
+            "bytes": 8009,
+            "sha256": "f9fb0cf4ad067857d32089549e80be73ffa220a298f9630800b97279ac191a4b"
           },
           "docs/ARCHITECTURE.md": {
-            "bytes": 10562,
-            "sha256": "bdad457053117836688f0d101e44acc2d794a51a181925ee94e024c58764c24c"
+            "required": false,
+            "present": true,
+            "bytes": 11704,
+            "sha256": "80375da1b4e393f44026c4a31105540007b0c26616b1b4c68c81586326fcba85"
           },
           "docs/DECISIONS.md": {
-            "bytes": 8162,
-            "sha256": "170e85f8dd14725a9a5fcaff74b3f276aee9d25917795cbe94be3eda62209c8d"
+            "required": false,
+            "present": true,
+            "bytes": 8416,
+            "sha256": "83ee295c555bde6b2e1d2e8057f8c88e3a00d5cc0b6f76020cdff089b976c13a"
           },
           "examples/SCENARIOS.md": {
-            "bytes": 6932,
-            "sha256": "974ee2f94f97fd0cbbabf37d33761e6dcf79e55e0f6b967a4dfd33e141cbd107"
+            "required": false,
+            "present": true,
+            "bytes": 7070,
+            "sha256": "525359f7745aa5a6e9122c0e3af3a1f2983cab25bbb5cc1889fff6f36e5e3883"
           }
-        }
+        },
+        "warnings": []
       }
     },
     "tests": {
@@ -185,131 +215,134 @@
   "metrics": {
     "success_rate": 0.8571,
     "retry_count": 0,
+    "retry_frequency": 0.0,
     "fallback_count": 0,
     "rollback_count": 0,
+    "rollback_frequency": 0.0,
+    "mttr_ms": null,
     "safe_stop_count": 1,
-    "end_to_end_latency_ms": 1687.0
+    "end_to_end_latency_ms": 1629.1
   },
   "events": [
     {
-      "ts": 1789409507.328247,
+      "ts": 1789413560.0413954,
       "step": "orchestrator",
       "status": "run_started",
       "detail": "steps=['requirements', 'policy', 'architecture', 'implementation', 'tests', 'docs', 'release']"
     },
     {
-      "ts": 1789409507.328252,
+      "ts": 1789413560.0414243,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['requirements']"
     },
     {
-      "ts": 1789409507.3288383,
+      "ts": 1789413560.0417907,
       "step": "requirements",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409507.3288457,
+      "ts": 1789413560.0417976,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['requirements']"
     },
     {
-      "ts": 1789409507.3288515,
+      "ts": 1789413560.0418026,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['policy']"
     },
     {
-      "ts": 1789409507.329086,
+      "ts": 1789413560.0422215,
       "step": "policy",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409507.3290915,
+      "ts": 1789413560.042228,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['policy']"
     },
     {
-      "ts": 1789409507.3290956,
+      "ts": 1789413560.0422323,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['architecture']"
     },
     {
-      "ts": 1789409507.3292592,
+      "ts": 1789413560.042486,
       "step": "architecture",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409507.3292634,
+      "ts": 1789413560.0424907,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['architecture']"
     },
     {
-      "ts": 1789409507.329266,
+      "ts": 1789413560.042494,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['implementation']"
     },
     {
-      "ts": 1789409507.3298283,
+      "ts": 1789413560.0431147,
       "step": "implementation",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409507.3298335,
+      "ts": 1789413560.0431201,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['implementation']"
     },
     {
-      "ts": 1789409507.3298373,
+      "ts": 1789413560.0431242,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['docs', 'tests']"
     },
     {
-      "ts": 1789409509.015206,
+      "ts": 1789413561.670461,
       "step": "docs",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409509.0152085,
+      "ts": 1789413561.6704643,
       "step": "tests",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409509.015222,
+      "ts": 1789413561.6704776,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['docs', 'tests']"
     },
     {
-      "ts": 1789409509.0152287,
+      "ts": 1789413561.670484,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['release']"
     },
     {
-      "ts": 1789409509.0152345,
+      "ts": 1789413561.6704912,
       "step": "release",
       "status": "safe_stop",
       "detail": "human approval denied or missing"
     },
     {
-      "ts": 1789409509.015274,
+      "ts": 1789413561.670534,
       "step": "orchestrator",
       "status": "run_finished",
-      "detail": "status=safe_stopped; metrics={'success_rate': 0.8571, 'retry_count': 0, 'fallback_count': 0, 'rollback_count': 0, 'safe_stop_count': 1, 'end_to_end_latency_ms': 1687.0}"
+      "detail": "status=safe_stopped; metrics={'success_rate': 0.8571, 'retry_count': 0, 'retry_frequency': 0.0, 'fallback_count': 0, 'rollback_count': 0, 'rollback_frequency': 0.0, 'mttr_ms': None, 'safe_stop_count': 1, 'end_to_end_latency_ms': 1629.1}"
     }
   ]
 }

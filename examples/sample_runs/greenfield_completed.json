@@ -1,5 +1,5 @@
 {
-  "run_id": "09e7894f-b6c8-481a-bb83-af92a165ac06",
+  "run_id": "743b5787-b172-43f0-bcfc-6021c2348c05",
   "parent_run_id": null,
   "status": "completed",
   "state": {
@@ -42,7 +42,7 @@
         "app/service.py": "f22999f6b4a649b03d119c9b0793a2a61dd1b3df735a88650b450a44b12f7061",
         "app/repository.py": "937fdc38ff3cbeeee2215fcdf15a37d3c108d8ba7004978d97bc3b30c82f1737",
         "app/db.py": "5035734e8fac03b9f6867fdac5c3bce62f0176d9b379000a40755f94a7692f4d",
-        "agentic/orchestrator.py": "26aa86ec0060ccce6fea819d25c1f322df9f86ac00d5ae9207d5fb654d6da55c",
+        "agentic/orchestrator.py": "9f34171bc4496191965d9911b15a653b6c999051c033475df00c7b3af0a0a885",
         "agentic/llm.py": "08eef5886a90133fe060beab8523a56d19b98ded03f3f0de863df778ec843eda"
       }
     },
@@ -51,38 +51,51 @@
       "primary": "ENGINEERING_WALKTHROUGH.md",
       "artifacts": {
         "ENGINEERING_WALKTHROUGH.md": {
-          "bytes": 51652,
-          "sha256": "9fba3f2be8da7d1b32a9a4dcfd6b10940fcef189f13235ffab7242eb3a149e37"
+          "required": true,
+          "present": true,
+          "bytes": 53406,
+          "sha256": "2aa6ec1922354435470ff7c841f9e59e959ac89566bb84a4c1cd9fcc2e776939"
         },
         "README.md": {
-          "bytes": 4971,
-          "sha256": "6d21850ae1efd07b0f250ca5a9029b0f4cb1e31c3ea58e1732db37a5a6ba9933"
+          "required": true,
+          "present": true,
+          "bytes": 5546,
+          "sha256": "46a80e4b16f43e55a7d3169a43aa6acca8baec5154ebb922a370305afe896747"
         },
         "docs/WHITEBOARD.md": {
-          "bytes": 7959,
-          "sha256": "383a193ddb719d06f6b97c5b721a25ec9a69d4e5d264b9a142c292675837cc8e"
+          "required": false,
+          "present": true,
+          "bytes": 8009,
+          "sha256": "f9fb0cf4ad067857d32089549e80be73ffa220a298f9630800b97279ac191a4b"
         },
         "docs/ARCHITECTURE.md": {
-          "bytes": 10562,
-          "sha256": "bdad457053117836688f0d101e44acc2d794a51a181925ee94e024c58764c24c"
+          "required": false,
+          "present": true,
+          "bytes": 11704,
+          "sha256": "80375da1b4e393f44026c4a31105540007b0c26616b1b4c68c81586326fcba85"
         },
         "docs/DECISIONS.md": {
-          "bytes": 8162,
-          "sha256": "170e85f8dd14725a9a5fcaff74b3f276aee9d25917795cbe94be3eda62209c8d"
+          "required": false,
+          "present": true,
+          "bytes": 8416,
+          "sha256": "83ee295c555bde6b2e1d2e8057f8c88e3a00d5cc0b6f76020cdff089b976c13a"
         },
         "examples/SCENARIOS.md": {
-          "bytes": 6932,
-          "sha256": "974ee2f94f97fd0cbbabf37d33761e6dcf79e55e0f6b967a4dfd33e141cbd107"
+          "required": false,
+          "present": true,
+          "bytes": 7070,
+          "sha256": "525359f7745aa5a6e9122c0e3af3a1f2983cab25bbb5cc1889fff6f36e5e3883"
         }
-      }
+      },
+      "warnings": []
     },
     "validation": {
       "passed": true,
       "command": "python -m pytest -q tests/test_api.py",
-      "summary": ".......                                                                  [100%]\n7 passed in 0.23s"
+      "summary": ".......                                                                  [100%]\n7 passed in 0.24s"
     },
     "release_ready": true,
-    "latency_ms": 1605.37
+    "latency_ms": 1751.2
   },
   "step_status": {
     "requirements": "success",
@@ -138,7 +151,7 @@
           "app/service.py": "f22999f6b4a649b03d119c9b0793a2a61dd1b3df735a88650b450a44b12f7061",
           "app/repository.py": "937fdc38ff3cbeeee2215fcdf15a37d3c108d8ba7004978d97bc3b30c82f1737",
           "app/db.py": "5035734e8fac03b9f6867fdac5c3bce62f0176d9b379000a40755f94a7692f4d",
-          "agentic/orchestrator.py": "26aa86ec0060ccce6fea819d25c1f322df9f86ac00d5ae9207d5fb654d6da55c",
+          "agentic/orchestrator.py": "9f34171bc4496191965d9911b15a653b6c999051c033475df00c7b3af0a0a885",
           "agentic/llm.py": "08eef5886a90133fe060beab8523a56d19b98ded03f3f0de863df778ec843eda"
         }
       }
@@ -149,37 +162,50 @@
         "primary": "ENGINEERING_WALKTHROUGH.md",
         "artifacts": {
           "ENGINEERING_WALKTHROUGH.md": {
-            "bytes": 51652,
-            "sha256": "9fba3f2be8da7d1b32a9a4dcfd6b10940fcef189f13235ffab7242eb3a149e37"
+            "required": true,
+            "present": true,
+            "bytes": 53406,
+            "sha256": "2aa6ec1922354435470ff7c841f9e59e959ac89566bb84a4c1cd9fcc2e776939"
           },
           "README.md": {
-            "bytes": 4971,
-            "sha256": "6d21850ae1efd07b0f250ca5a9029b0f4cb1e31c3ea58e1732db37a5a6ba9933"
+            "required": true,
+            "present": true,
+            "bytes": 5546,
+            "sha256": "46a80e4b16f43e55a7d3169a43aa6acca8baec5154ebb922a370305afe896747"
           },
           "docs/WHITEBOARD.md": {
-            "bytes": 7959,
-            "sha256": "383a193ddb719d06f6b97c5b721a25ec9a69d4e5d264b9a142c292675837cc8e"
+            "required": false,
+            "present": true,
+            "bytes": 8009,
+            "sha256": "f9fb0cf4ad067857d32089549e80be73ffa220a298f9630800b97279ac191a4b"
           },
           "docs/ARCHITECTURE.md": {
-            "bytes": 10562,
-            "sha256": "bdad457053117836688f0d101e44acc2d794a51a181925ee94e024c58764c24c"
+            "required": false,
+            "present": true,
+            "bytes": 11704,
+            "sha256": "80375da1b4e393f44026c4a31105540007b0c26616b1b4c68c81586326fcba85"
           },
           "docs/DECISIONS.md": {
-            "bytes": 8162,
-            "sha256": "170e85f8dd14725a9a5fcaff74b3f276aee9d25917795cbe94be3eda62209c8d"
+            "required": false,
+            "present": true,
+            "bytes": 8416,
+            "sha256": "83ee295c555bde6b2e1d2e8057f8c88e3a00d5cc0b6f76020cdff089b976c13a"
           },
           "examples/SCENARIOS.md": {
-            "bytes": 6932,
-            "sha256": "974ee2f94f97fd0cbbabf37d33761e6dcf79e55e0f6b967a4dfd33e141cbd107"
+            "required": false,
+            "present": true,
+            "bytes": 7070,
+            "sha256": "525359f7745aa5a6e9122c0e3af3a1f2983cab25bbb5cc1889fff6f36e5e3883"
           }
-        }
+        },
+        "warnings": []
       }
     },
     "tests": {
       "validation": {
         "passed": true,
         "command": "python -m pytest -q tests/test_api.py",
-        "summary": ".......                                                                  [100%]\n7 passed in 0.23s"
+        "summary": ".......                                                                  [100%]\n7 passed in 0.24s"
       }
     },
     "release": {
@@ -189,143 +215,146 @@
   "metrics": {
     "success_rate": 1.0,
     "retry_count": 0,
+    "retry_frequency": 0.0,
     "fallback_count": 0,
     "rollback_count": 0,
+    "rollback_frequency": 0.0,
+    "mttr_ms": null,
     "safe_stop_count": 0,
-    "end_to_end_latency_ms": 1605.37
+    "end_to_end_latency_ms": 1751.2
   },
   "events": [
     {
-      "ts": 1789409505.167602,
+      "ts": 1789413557.2306006,
       "step": "orchestrator",
       "status": "run_started",
       "detail": "steps=['requirements', 'policy', 'architecture', 'implementation', 'tests', 'docs', 'release']"
     },
     {
-      "ts": 1789409505.1676078,
+      "ts": 1789413557.2306063,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['requirements']"
     },
     {
-      "ts": 1789409505.167955,
+      "ts": 1789413557.2309709,
       "step": "requirements",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409505.1679614,
+      "ts": 1789413557.2309775,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['requirements']"
     },
     {
-      "ts": 1789409505.1679664,
+      "ts": 1789413557.2309825,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['policy']"
     },
     {
-      "ts": 1789409505.1682158,
+      "ts": 1789413557.231244,
       "step": "policy",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409505.1682212,
+      "ts": 1789413557.2312498,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['policy']"
     },
     {
-      "ts": 1789409505.168225,
+      "ts": 1789413557.2312539,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['architecture']"
     },
     {
-      "ts": 1789409505.1684585,
+      "ts": 1789413557.231501,
       "step": "architecture",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409505.168463,
+      "ts": 1789413557.2315059,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['architecture']"
     },
     {
-      "ts": 1789409505.1684663,
+      "ts": 1789413557.2315092,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['implementation']"
     },
     {
-      "ts": 1789409505.168994,
+      "ts": 1789413557.23205,
       "step": "implementation",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409505.1689985,
+      "ts": 1789413557.2320545,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['implementation']"
     },
     {
-      "ts": 1789409505.1690023,
+      "ts": 1789413557.232058,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['docs', 'tests']"
     },
     {
-      "ts": 1789409506.772731,
+      "ts": 1789413558.9815545,
       "step": "docs",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409506.7727334,
+      "ts": 1789413558.9815571,
       "step": "tests",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409506.7727473,
+      "ts": 1789413558.9815702,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['docs', 'tests']"
     },
     {
-      "ts": 1789409506.772754,
+      "ts": 1789413558.9815772,
       "step": "orchestrator",
       "status": "wave_started",
       "detail": "ready=['release']"
     },
     {
-      "ts": 1789409506.7727578,
+      "ts": 1789413558.981582,
       "step": "release",
       "status": "approval_granted",
       "detail": "human approval checkpoint passed"
     },
     {
-      "ts": 1789409506.7729633,
+      "ts": 1789413558.9817944,
       "step": "release",
       "status": "success",
       "detail": "attempt=1"
     },
     {
-      "ts": 1789409506.7729676,
+      "ts": 1789413558.9817991,
       "step": "orchestrator",
       "status": "wave_completed",
       "detail": "completed=['release']"
     },
     {
-      "ts": 1789409506.7729986,
+      "ts": 1789413558.9818354,
       "step": "orchestrator",
       "status": "run_finished",
-      "detail": "status=completed; metrics={'success_rate': 1.0, 'retry_count': 0, 'fallback_count': 0, 'rollback_count': 0, 'safe_stop_count': 0, 'end_to_end_latency_ms': 1605.37}"
+      "detail": "status=completed; metrics={'success_rate': 1.0, 'retry_count': 0, 'retry_frequency': 0.0, 'fallback_count': 0, 'rollback_count': 0, 'rollback_frequency': 0.0, 'mttr_ms': None, 'safe_stop_count': 0, 'end_to_end_latency_ms': 1751.2}"
     }
   ]
 }

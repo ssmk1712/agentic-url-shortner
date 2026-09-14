@@ -6,19 +6,44 @@ os.environ["MAX_AGENT_RETRIES"] = "2"
 from agentic.orchestrator import Orchestrator, Step, default_graph
 
 
+def _deterministic_default_graph():
+    """Default topology with in-memory leaf actions for orchestration unit tests.
+
+    The real scenario path still uses implementation_agent/test_agent/docs_agent. Unit tests
+    should not recursively launch a second pytest process through test_agent.
+    """
+
+    def implementation(_state):
+        return {"implementation": {"status": "verified", "source": "unit-test-fixture"}}
+
+    def validate(_state):
+        return {"validation": {"passed": True, "source": "unit-test-fixture"}}
+
+    def docs(_state):
+        return {"documentation": {"passed": True, "source": "unit-test-fixture"}}
+
+    return default_graph(
+        implementation_action=implementation,
+        test_action=validate,
+        documentation_action=docs,
+    )
+
+
 def test_safe_stop_without_approval(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    run = Orchestrator().execute(default_graph(), {"requirement": "x", "ambiguous": False})
+    run = Orchestrator().execute(_deterministic_default_graph(), {"requirement": "x", "ambiguous": False})
     assert run.status == "safe_stopped"
     assert not run.state.get("release_ready")
     assert run.step_status["release"] == "safe_stop"
+    assert run.state["safe_stop"]["step"] == "release"
+    assert "approval" in run.state["safe_stop"]["reason"]
     assert run.metrics["safe_stop_count"] >= 1
 
 
 def test_release_with_approval(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     run = Orchestrator(lambda _: True).execute(
-        default_graph(), {"requirement": "x", "ambiguous": False}
+        _deterministic_default_graph(), {"requirement": "x", "ambiguous": False}
     )
     assert run.status == "completed"
     assert run.state["release_ready"] is True

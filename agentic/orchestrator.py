@@ -240,6 +240,7 @@ class Orchestrator:
 
     def _safe_stop(self, run: Run, step: str, detail: str) -> None:
         run.status = "safe_stopped"
+        run.state["safe_stop"] = {"step": step, "reason": detail}
         self._event(run, step, "safe_stop", detail)
 
     def _finish(self, run: Run, started: float) -> None:
@@ -452,13 +453,29 @@ def release_agent(state: dict) -> dict:
     return {"release_ready": True}
 
 
-def default_graph() -> list[Step]:
+def default_graph(
+    *,
+    implementation_action: Action | None = None,
+    test_action: Action | None = None,
+    documentation_action: Action | None = None,
+) -> list[Step]:
+    """Build the default SDLC graph.
+
+    The action overrides are intentional dependency-injection seams. Production/scenario
+    execution uses the real repository validators by default, while orchestrator unit tests
+    can supply deterministic in-memory actions. This avoids recursively launching pytest
+    from inside pytest and keeps orchestration tests focused on orchestration semantics.
+    """
+    implementation_action = implementation_action or implementation_agent
+    test_action = test_action or test_agent
+    documentation_action = documentation_action or docs_agent
+
     return [
         Step("requirements", [], requirements_agent, fallback=requirements_fallback),
         Step("policy", ["requirements"], policy_agent, max_retries=0),
         Step("architecture", ["requirements", "policy"], architecture_agent, max_retries=0),
-        Step("implementation", ["architecture"], implementation_agent, max_retries=0),
-        Step("tests", ["implementation"], test_agent, max_retries=1),
-        Step("docs", ["implementation"], docs_agent, max_retries=0),
+        Step("implementation", ["architecture"], implementation_action, max_retries=0),
+        Step("tests", ["implementation"], test_action, max_retries=1),
+        Step("docs", ["implementation"], documentation_action, max_retries=0),
         Step("release", ["tests", "docs"], release_agent, high_impact=True, max_retries=0),
     ]

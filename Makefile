@@ -10,8 +10,8 @@ compile:
 	python -m compileall -q app agentic tests
 
 validate: test compile
-	python -m agentic.run_scenario greenfield --approve-release >/dev/null
-	python -m agentic.run_scenario brownfield --approve-release >/dev/null
+	python -m agentic.run_scenario greenfield --approve-release
+	python -m agentic.run_scenario brownfield --approve-release
 
 run:
 	uvicorn app.main:app --reload

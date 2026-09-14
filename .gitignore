@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+data/
+docs/
+*.pyc
+.DS_Store
+artifacts/runs/*.json
+!artifacts/runs/.gitkeep
